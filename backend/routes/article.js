@@ -1,6 +1,4 @@
  const express = require('express')
- const Article = require('../models/articleModel')
-const articleModel = require('../models/articleModel')
 const { 
     createArticle,
     getArticle,
@@ -8,9 +6,11 @@ const {
     deleteArticle,
     updateArticle
  } = require('../controllers/articleController')
-
-
+ const requireAuth = require('../middleware/requireAuth')
+ 
  const router = express.Router()
+
+ router.use(requireAuth)
 
  router.get('/', getArticles)
 
