@@ -1,6 +1,7 @@
  const express = require('express')
 const { 
     createArticle,
+    getallArticles,
     getArticle,
     getArticles,
     deleteArticle,
@@ -13,6 +14,8 @@ const {
  router.use(requireAuth)
 
  router.get('/', getArticles)
+
+ router.get('/all', getallArticles);
 
  router.get('/:id', getArticle)
 

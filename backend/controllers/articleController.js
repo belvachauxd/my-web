@@ -4,10 +4,17 @@ const mongoose = require('mongoose')
 //get all articles
 const getArticles = async (req, res) => {
     const user_id = req.user._id
+      
     const articles = await Article.find({user_id}).sort({createdAt: -1})
+        res.status(200).json(articles)
 
-    res.status(200).json(articles)
-}
+      }
+
+const getallArticles = async (req, res) => {
+    const articles = await Article.find({}).sort({createdAt: -1})
+        res.status(200).json(articles)
+    
+          }
 
 //get a single article
 const getArticle = async (req, res) => {
@@ -92,6 +99,7 @@ const updateArticle = async (req, res) => {
 
 module.exports = {
     getArticle,
+    getallArticles,
     getArticles,
     createArticle,
     deleteArticle,
