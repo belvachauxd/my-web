@@ -1,0 +1,162 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --primary: #fccb63;
+  --error: #e7195a;
+}
+body {
+  margin: 0;
+  font-family: "Poppins";
+  background-image: url("../public/images/equality.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+header {
+  background: #ffffff;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* homepage */
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+.article-details {
+  background: #fcfbff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  max-width: 850px; /* Add this line */
+}
+
+.article-details pre {
+  white-space: pre-wrap;
+  font-family: "Poppins";
+}
+
+.article-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+  
+}
+.article-details p {
+  margin: 5;
+  font-size: 0.9em;
+  color: #555;
+  
+}
+.article-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+/* new article form */
+
+input,
+textarea {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #fcfbff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: top;
+  resize: none;
+  line-height: normal;
+  overflow-y: scroll;
+}
+
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+}
+
+nav a {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+nav a, nav button {
+  margin-left: 10px;
+}
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* auth forms */
+form.signup, form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.my-articles h2 {
+  text-align: center
+}
+
+/* .login-background {
+  background-image: url("../public/images/equality.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
