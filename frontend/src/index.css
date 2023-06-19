@@ -9,9 +9,10 @@
 body {
   margin: 0;
   font-family: "Poppins";
+  background-color: #f7ecff;
   background-image: url("../public/images/equality.png");
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
 }
 header {
   background: #ffffff;
