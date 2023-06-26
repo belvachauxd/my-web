@@ -11,7 +11,7 @@ const MyArticles = () => {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetch(`/api/articles?user_id=${user._id}`, {
+      const response = await fetch(`/api/articles`, {
         headers: { 'Authorization': `Bearer ${user.token}` },
       });
 
@@ -33,7 +33,7 @@ const MyArticles = () => {
       <h2>My Articles</h2>
       <div className="articles">
         {articles && articles.map((article) => (
-        <ArticleDetails key={article._id} article={article} isHome={false} />
+        <ArticleDetails key={article._id} article={article} />
         ))}
       </div>
     </div>

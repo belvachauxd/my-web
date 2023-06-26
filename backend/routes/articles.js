@@ -15,9 +15,9 @@ const router = express.Router()
 router.use(requireAuth)
 
 // GET all articles
-router.get('/', getArticles)
+router.get('/', getAllArticles)
 
-router.get('/myarticles', getAllArticles)
+router.get('/myarticles', getArticles)
 
 //GET a single article
 router.get('/:id', getArticle)

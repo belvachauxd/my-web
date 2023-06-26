@@ -28,8 +28,8 @@ const ArticleDetails = ({ article, isHome }) => {
       dispatch({type: 'DELETE_ARTICLE', payload: json})
     }
   }
-  const showDeleteButton = !isHome && user && article?.user && user._id === article.user._id;
-  console.log('showDeleteButton:', showDeleteButton);
+  // const showDeleteButton = !isHome && user && article?.user && user._id === article.user._id;
+  // console.log('showDeleteButton:', showDeleteButton);
 
 
   return (
@@ -38,7 +38,7 @@ const ArticleDetails = ({ article, isHome }) => {
       <p><strong>Author: </strong>{article.author}</p>
       <p><strong>Content: </strong>{article.content}</p>
       <p>{formatDistanceToNow(new Date(article.createdAt), { addSuffix: true })}</p>
-      {!isHome && showDeleteButton && <span className="material-symbols-outlined" onClick={handleClick}>delete</span>}
+      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>
   )
 }

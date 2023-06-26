@@ -1,6 +1,6 @@
 import { useEffect }from 'react'
 import { useArticlesContext } from "../hooks/useArticlesContext"
-// import { useAuthContext } from "../hooks/useAuthContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import ArticleDetails from '../components/ArticleDetails'
@@ -8,11 +8,13 @@ import ArticleForm from '../components/ArticleForm'
 
 const Home = () => {
   const {articles, dispatch} = useArticlesContext()
-  // const {user} = useAuthContext()
+  const {user} = useAuthContext()
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetch("/api/articles");
+      const response = await fetch("/api/articles", {
+        headers: { 'Authorization': `Bearer ${user.token}` },
+    });
 
       if (!response.ok) {
         const message = await response.json();
@@ -32,7 +34,7 @@ const Home = () => {
     <div className="home">
       <div className="articles">
         {articles && articles.map((article) => (
-          <ArticleDetails key={article._id} article={article} isHome={false} />
+          <ArticleDetails key={article._id} article={article}/>
         ))}
       </div>
       <ArticleForm />
