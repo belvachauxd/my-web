@@ -1,4 +1,4 @@
-[
+const quizData = [
     {
       "id": 1,
       "text": "What is bias?",
@@ -220,3 +220,5 @@
         "correct": 2
       }
 ]
+
+export default quizData;

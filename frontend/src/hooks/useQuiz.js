@@ -1,34 +1,36 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const QuizContext = createContext();
+export const useQuiz = (quizData) => {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
 
-export function useQuiz() {
-  return useContext(QuizContext);
-}
+  const submitAnswer = (answerIndex) => {
+    const newAnswers = [...answers];
+    newAnswers[currentQuestionIndex] = answerIndex;
+    setAnswers(newAnswers);
 
-export function QuizProvider({ children }) {
-  const [questions, setQuestions] = useState([]);
-
-  useEffect(() => {
-    // Fetch questions from the server and set them in state
-    const fetchQuestions = async () => {
-      const response = await fetch('/api/questions');
-      const data = await response.json();
-      setQuestions(data);
-    };
-    fetchQuestions();
-  }, []);
-
-  const submitAnswers = async (answers) => {
-    // Submit the answers to the server
-    await fetch('/api/answers', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(answers),
-    });
+    const nextQuestionIndex = currentQuestionIndex + 1;
+    if (nextQuestionIndex < quizData.length) {
+      setCurrentQuestionIndex(nextQuestionIndex);
+    } else {
+      calculateScore();
+    }
   };
 
-  const value = { questions, submitAnswers };
+  const calculateScore = () => {
+    let score = 0;
+    quizData.forEach((question, index) => {
+      if (question.correct === answers[index]) {
+        score += 1;
+      }
+    });
+    console.log(`You scored ${score} out of ${quizData.length}`);
+  };
 
-  return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
-}
+  const currentQuestion = quizData[currentQuestionIndex];
+
+  return {
+    currentQuestion,
+    submitAnswer,
+  };
+};

@@ -1,49 +1,46 @@
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../hooks/useQuiz';
+import quizData from '../context/QuizContext';
 
 function Quiz() {
   const navigate = useNavigate();
-  const { questions, submitAnswers } = useQuiz();
-  const [answers, setAnswers] = useState([]);
+  const { currentQuestion, submitAnswer } = useQuiz(quizData);
+  const [answerIndex, setAnswerIndex] = useState(null);
 
-  const handleAnswerChange = (questionIndex, answerIndex) => {
-    // Create a copy of the answers array and update the selected answer for the current question
-    const newAnswers = [...answers];
-    newAnswers[questionIndex] = answerIndex;
-    setAnswers(newAnswers);
+  const handleAnswerChange = (event) => {
+    setAnswerIndex(parseInt(event.target.value, 10));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    submitAnswers(answers);
-    navigate('/results');
+    submitAnswer(answerIndex);
+    setAnswerIndex(null);
   };
 
   return (
     <div>
       <h1>Bias Awareness Quiz</h1>
       <form onSubmit={handleSubmit}>
-        {questions.map((question, questionIndex) => (
-          <div key={questionIndex}>
-            <h2>{question.text}</h2>
-            {question.options.map((option, optionIndex) => (
-              <div key={optionIndex}>
-                <input
-                  type="radio"
-                  id={`q${questionIndex}-o${optionIndex}`}
-                  name={`q${questionIndex}`}
-                  value={optionIndex}
-                  checked={answers[questionIndex] === optionIndex}
-                  onChange={() => handleAnswerChange(questionIndex, optionIndex)}
-                />
-                <label htmlFor={`q${questionIndex}-o${optionIndex}`}>{option}</label>
-              </div>
-            ))}
-          </div>
-        ))}
-        <button type="submit">Submit Answers</button>
+        <div>
+          <h2>{currentQuestion.text}</h2>
+          {currentQuestion.options.map((option, index) => (
+            <div key={index}>
+              <input
+                type="radio"
+                id={`option${index}`}
+                name="answer"
+                value={index}
+                checked={index === answerIndex}
+                onChange={handleAnswerChange}
+              />
+              <label htmlFor={`option${index}`}>{option}</label>
+            </div>
+          ))}
+        </div>
+        <button type="submit">Submit Answer</button>
       </form>
+      <button onClick={() => navigate('/results')}>View Results</button>
     </div>
   );
 }

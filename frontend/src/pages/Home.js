@@ -27,7 +27,7 @@ const Home = () => {
     };
 
     fetchArticles();
-  }, [dispatch]);
+  }, [dispatch, user.token]);
 
 
   return (

@@ -34,7 +34,7 @@ const ArticleDetails = ({ article, isHome }) => {
     <div className="article-details">
       <h4>{article.title}</h4>
       <p><strong>Author: </strong>{article.author}</p>
-      <p><strong>Content: </strong>{article.content}</p>
+      <p><strong>Content: </strong><div>{article.content}</div></p>
       <p>{formatDistanceToNow(new Date(article.createdAt), { addSuffix: true })}</p>
       {isHome ? null : <span className="material-symbols-outlined" onClick={handleClick}>delete</span>}
     </div>
