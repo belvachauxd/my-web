@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
+
 export const useQuiz = (quizData) => {
+  const [questions] = useState(quizData);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
 
@@ -10,7 +12,7 @@ export const useQuiz = (quizData) => {
     setAnswers(newAnswers);
 
     const nextQuestionIndex = currentQuestionIndex + 1;
-    if (nextQuestionIndex < quizData.length) {
+    if (nextQuestionIndex < questions.length) {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       calculateScore();
@@ -19,15 +21,15 @@ export const useQuiz = (quizData) => {
 
   const calculateScore = () => {
     let score = 0;
-    quizData.forEach((question, index) => {
+    questions.forEach((question, index) => {
       if (question.correct === answers[index]) {
         score += 1;
       }
     });
-    console.log(`You scored ${score} out of ${quizData.length}`);
+    console.log(`You scored ${score} out of ${questions.length}`);
   };
 
-  const currentQuestion = quizData[currentQuestionIndex];
+  const currentQuestion = questions[currentQuestionIndex];
 
   return {
     currentQuestion,

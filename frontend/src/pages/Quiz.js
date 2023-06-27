@@ -18,11 +18,13 @@ function Quiz() {
     setAnswerIndex(null);
   };
 
+  const isLastQuestion = currentQuestion.id === quizData.length;
+
   return (
-    <div>
+    <div className="quiz-container">
       <h1>Bias Awareness Quiz</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="quiz-form">
+        <div className="question-container">
           <h2>{currentQuestion.text}</h2>
           {currentQuestion.options.map((option, index) => (
             <div key={index}>
@@ -38,9 +40,13 @@ function Quiz() {
             </div>
           ))}
         </div>
-        <button type="submit">Submit Answer</button>
+        <div className="button-container">
+          <button type="submit">Submit Answer</button>
+          {isLastQuestion && (
+            <button onClick={() => navigate('/results')}>View Results</button>
+          )}
+        </div>
       </form>
-      <button onClick={() => navigate('/results')}>View Results</button>
     </div>
   );
 }

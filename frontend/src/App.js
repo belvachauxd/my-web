@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import MyArticles from './pages/MyArticles'
 import Quiz from './pages/Quiz';
+import Result from './pages/Result';
 
 function App() {
   const { user } = useAuthContext()
@@ -34,10 +35,14 @@ function App() {
               path="/myarticles" 
               element={user ? <MyArticles /> : <Navigate to="/login" />} 
             />
-            < Route 
+            <Route 
               path="/quiz" 
-              element={user ? <Quiz /> : <Navigate to="/login" />}
-              />
+              element={user ? <Quiz /> : <Navigate to="/login" />} 
+            />
+            <Route 
+              path="/results" 
+              element={user ? <Result /> : <Navigate to="/login" />} 
+            />
           </Routes>
         </div>
       </BrowserRouter>
