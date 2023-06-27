@@ -7,7 +7,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import MyArticles from './pages/MyArticles'
-// import Quiz from './pages/Quiz';
+import Quiz from './pages/Quiz';
 
 function App() {
   const { user } = useAuthContext()
@@ -34,10 +34,10 @@ function App() {
               path="/myarticles" 
               element={user ? <MyArticles /> : <Navigate to="/login" />} 
             />
-                        {/* <Route 
+            < Route 
               path="/quiz" 
-              element={user ? <Quiz /> : <Navigate to="/login" />} // add the new Quiz route */}
-            
+              element={user ? <Quiz /> : <Navigate to="/login" />}
+              />
           </Routes>
         </div>
       </BrowserRouter>

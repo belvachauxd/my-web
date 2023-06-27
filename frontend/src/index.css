@@ -57,6 +57,10 @@ header a {
   font-family: "Poppins";
 }
 
+.article-details * {
+  white-space: pre-wrap;
+}
+
 .article-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
@@ -154,10 +158,3 @@ form.signup, form.login {
 .my-articles h2 {
   text-align: center
 }
-
-/* .login-background {
-  background-image: url("../public/images/equality.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */

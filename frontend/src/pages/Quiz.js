@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useQuiz } from '../hooks/useQuiz';
 
 function Quiz() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { questions, submitAnswers } = useQuiz();
   const [answers, setAnswers] = useState([]);
 
@@ -14,9 +14,10 @@ function Quiz() {
     setAnswers(newAnswers);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     submitAnswers(answers);
-    history.push('/results');
+    navigate('/results');
   };
 
   return (

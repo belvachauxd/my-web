@@ -33,7 +33,7 @@ const MyArticles = () => {
       <h2>My Articles</h2>
       <div className="articles">
         {articles && articles.map((article) => (
-        <ArticleDetails key={article._id} article={article} />
+        <ArticleDetails key={article._id} article={article} isHome={false} />
         ))}
       </div>
     </div>

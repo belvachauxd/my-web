@@ -34,7 +34,7 @@ const Home = () => {
     <div className="home">
       <div className="articles">
         {articles && articles.map((article) => (
-          <ArticleDetails key={article._id} article={article}/>
+          <ArticleDetails key={article._id} article={article} isHome={true}/>
         ))}
       </div>
       <ArticleForm />
